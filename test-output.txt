@@ -1,0 +1,16 @@
+🚀 Starting Reminder Scheduler...
+🧪 Testing Forced Telugu Voice Call...
+🔄 Refetched user: Test User, Language: en
+Debug Reminder: User language is 'en'
+📡 Attempting to send reminders via: voice
+🔍 Processing method: voice
+🗣️ Initiating Voice Call in Telugu to +919876543210
+--- MOCK VOICE CALL CALL ---
+To: +919876543210
+Language: te
+Message: Dolo 650 - 1 Tablet వేసుకోండి. భోజనం తర్వాత వేసుకోండి
+----------------------------
+✅ SUCCESS: Language is Telugu!
+✅ SUCCESS: Message contains Telugu text.
+✅ VOICE reminder sent successfully for Dolo 650
+🏁 Test completed.

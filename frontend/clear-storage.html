@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear MediSafe Storage</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+        }
+
+        button.danger {
+            background: #e74c3c;
+        }
+
+        button.danger:hover {
+            background: #c0392b;
+        }
+
+        button.success {
+            background: #27ae60;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .status.show {
+            display: block;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .emoji {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="emoji">💊</div>
+        <h1>MediSafe Storage Manager</h1>
+        <p>Clear your authentication to return to the login page</p>
+
+        <button id="clearBtn" class="danger" onclick="clearStorage()">
+            🗑️ Clear Authentication & Reload
+        </button>
+
+        <button onclick="checkStorage()">
+            🔍 Check Current Status
+        </button>
+
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        function clearStorage() {
+            // Clear localStorage
+            const tokenBefore = localStorage.getItem('token');
+            const userBefore = localStorage.getItem('user');
+
+            localStorage.clear();
+
+            // Also clear any web storage that might be used
+            if (window.sessionStorage) {
+                sessionStorage.clear();
+            }
+
+            // Show status
+            const statusDiv = document.getElementById('status');
+            statusDiv.className = 'status success show';
+            statusDiv.innerHTML = `
+                <strong>✅ Storage Cleared Successfully!</strong><br>
+                Token was: ${tokenBefore ? '✅ Present (removed)' : '❌ Not found'}<br>
+                User was: ${userBefore ? '✅ Present (removed)' : '❌ Not found'}<br>
+                <br>
+                <strong>Redirecting to login page in 2 seconds...</strong>
+            `;
+
+            // Redirect to localhost:8081 after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'http://localhost:8081';
+            }, 2000);
+        }
+
+        function checkStorage() {
+            const token = localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+
+            const statusDiv = document.getElementById('status');
+            statusDiv.className = 'status info show';
+
+            if (token || user) {
+                statusDiv.innerHTML = `
+                    <strong>📦 Current Storage Status:</strong><br>
+                    Token: ${token ? '✅ Exists (you are "logged in")' : '❌ Not found'}<br>
+                    User: ${user ? '✅ Exists' : '❌ Not found'}<br>
+                    <br>
+                    ${token ? 'Token preview: ' + token.substring(0, 40) + '...' : ''}
+                    <br><br>
+                    <strong>You need to clear storage to see the login page.</strong>
+                `;
+            } else {
+                statusDiv.innerHTML = `
+                    <strong>✅ Storage is Clean!</strong><br>
+                    No authentication data found.<br>
+                    You should see the login page when you visit localhost:8081
+                `;
+            }
+        }
+
+        // Auto-check on load
+        window.onload = () => {
+            checkStorage();
+        };
+    </script>
+</body>
+
+</html>

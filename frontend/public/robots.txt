@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://intelligent-medication.vercel.app/sitemap.xml

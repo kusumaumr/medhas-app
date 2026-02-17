@@ -1,0 +1,72 @@
+User found: kusuma kadimisetty
+Blood Group: O+
+Allergies: ["Penicillin","Pollen","Peanuts"]
+Medical Conditions: [{"name":"Hypertension","diagnosedDate":"2020-03-10T00:00:00.000Z","status":"active","_id":"6993e9248491a1a0cf4db908","id":"6993e9248491a1a0cf4db908"},{"name":"Type 2 Diabetes","diagnosedDate":"2019-08-22T00:00:00.000Z","status":"active","_id":"6993e9248491a1a0cf4db909","id":"6993e9248491a1a0cf4db909"}]
+Emergency Contacts: [{"name":"Rajesh Kadimisetty","phone":"+919876543210","relationship":"Spouse","email":"rajesh@example.com","priority":1,"_id":"6993e9248491a1a0cf4db90a","id":"6993e9248491a1a0cf4db90a"},{"name":"Dr. Vinay Kumar","phone":"+919123456789","relationship":"Doctor","email":"dr.vinay@hospital.com","priority":2,"_id":"6993e9248491a1a0cf4db90b","id":"6993e9248491a1a0cf4db90b"}]
+Full Object: {
+  "notificationPreferences": {
+    "push": true,
+    "sms": true,
+    "email": true,
+    "reminderTime": "30"
+  },
+  "_id": "6983471451df1fe21c0fca51",
+  "name": "kusuma kadimisetty",
+  "email": "kusumaumr@gmail.com",
+  "password": "$2a$10$Kn1.RnruCCozAl7yQ6oMTOMuq6Ifqi1OW2Y8e07GELEI1sy5C/UYm",
+  "phone": "+917842501571",
+  "allergies": [
+    "Penicillin",
+    "Pollen",
+    "Peanuts"
+  ],
+  "language": "te",
+  "isActive": true,
+  "loginCount": 28,
+  "medicalConditions": [
+    {
+      "name": "Hypertension",
+      "diagnosedDate": "2020-03-10T00:00:00.000Z",
+      "status": "active",
+      "_id": "6993e9248491a1a0cf4db908",
+      "id": "6993e9248491a1a0cf4db908"
+    },
+    {
+      "name": "Type 2 Diabetes",
+      "diagnosedDate": "2019-08-22T00:00:00.000Z",
+      "status": "active",
+      "_id": "6993e9248491a1a0cf4db909",
+      "id": "6993e9248491a1a0cf4db909"
+    }
+  ],
+  "emergencyContacts": [
+    {
+      "name": "Rajesh Kadimisetty",
+      "phone": "+919876543210",
+      "relationship": "Spouse",
+      "email": "rajesh@example.com",
+      "priority": 1,
+      "_id": "6993e9248491a1a0cf4db90a",
+      "id": "6993e9248491a1a0cf4db90a"
+    },
+    {
+      "name": "Dr. Vinay Kumar",
+      "phone": "+919123456789",
+      "relationship": "Doctor",
+      "email": "dr.vinay@hospital.com",
+      "priority": 2,
+      "_id": "6993e9248491a1a0cf4db90b",
+      "id": "6993e9248491a1a0cf4db90b"
+    }
+  ],
+  "caregivers": [],
+  "createdAt": "2026-02-04T13:18:12.782Z",
+  "updatedAt": "2026-02-17T04:05:56.164Z",
+  "__v": 4,
+  "lastLogin": "2026-02-15T06:42:32.432Z",
+  "bloodGroup": "O+",
+  "dateOfBirth": "1995-05-15T00:00:00.000Z",
+  "gender": "female",
+  "age": 30,
+  "id": "6983471451df1fe21c0fca51"
+}

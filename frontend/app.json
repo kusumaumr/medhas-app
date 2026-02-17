@@ -1,0 +1,84 @@
+{
+    "expo": {
+        "name": "Intelligent Medication Adherence Health Safety System",
+        "slug": "medhas",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "userInterfaceStyle": "light",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "description": "Intelligent Medication Adherence Health Safety System (iMedhas) - Your intelligent medication companion for adherence and safety.",
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": [
+            "**/*"
+        ],
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.medisafe.medhas"
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#FFFFFF"
+            },
+            "intentFilters": [
+                {
+                    "action": "VIEW",
+                    "autoVerify": true,
+                    "data": [
+                        {
+                            "scheme": "medhas"
+                        }
+                    ],
+                    "category": [
+                        "BROWSABLE",
+                        "DEFAULT"
+                    ]
+                }
+            ],
+            "package": "com.medisafe.medhas"
+        },
+        "scheme": "medhas",
+        "web": {
+            "bundler": "metro",
+            "favicon": "./assets/favicon.png",
+            "name": "Intelligent Medication Adherence Health Safety System",
+            "shortName": "iMedhas",
+            "description": "iMedhas - An intelligent system to ensure medication adherence and health safety for patients.",
+            "themeColor": "#10b981",
+            "backgroundColor": "#ffffff",
+            "display": "standalone",
+            "scope": "/",
+            "startUrl": "/",
+            "lang": "en",
+            "meta": [
+                {
+                    "name": "description",
+                    "content": "Intelligent Medication Adherence Health Safety System (iMedhas) - Helping patients stay on track with their medications safely."
+                },
+                {
+                    "name": "keywords",
+                    "content": "medication adherence, health safety, patient care, medisafe, imedhas, medication reminder"
+                },
+                {
+                    "property": "og:title",
+                    "content": "Intelligent Medication Adherence Health Safety System"
+                },
+                {
+                    "property": "og:description",
+                    "content": "An intelligent system to ensure medication adherence and health safety for patients."
+                },
+                {
+                    "property": "og:type",
+                    "content": "website"
+                }
+            ]
+        }
+    }
+}

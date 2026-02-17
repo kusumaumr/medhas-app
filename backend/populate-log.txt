@@ -1,0 +1,6 @@
+Connected to MongoDB
+Updating user: kusuma kadimisetty
+User updated with full profile details!
+Updating medication: metformin
+Medication updated with full details!
+ALL DONE!
