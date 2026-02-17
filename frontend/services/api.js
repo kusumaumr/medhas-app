@@ -8,24 +8,19 @@ import { mockAuthAPI, mockMedicationAPI, MOCK_MODE_ENABLED } from './mockBackend
 const getApiBaseUrl = () => {
     // If running in browser
     if (typeof window !== 'undefined') {
-        const { hostname, port, protocol } = window.location;
-        // If served from the exact same host/port (production/unified build)
-        // OR if we are just proxying
-        // We want to use relative path if possible, OR fallback to known backend port
+        const { hostname } = window.location;
 
-        // Development scenario: Web (8081) -> Backend (5000)
-        if (hostname === 'localhost' && port === '8081') {
+        // Development: Localhost
+        if (hostname === 'localhost' || hostname === '127.0.0.1') {
             return 'http://localhost:5000/api';
         }
 
-        // "Same Host" scenario: Web served by Backend or Proxy
-        // If we are on port 5000 or any other production URL
-        return `${protocol}//${hostname}:${port}/api`;
-        // OR just return '/api' if we are sure it's proxied
-        // return '/api';
+        // Production: Vercel/Netlify/GitHub Pages -> Render Backend
+        return 'https://medhas-backend.onrender.com/api';
     }
-    // Mobile (Android Emulator)
-    return 'http://10.0.2.2:5000/api';
+
+    // Mobile (Android/iOS) -> Render Backend
+    return 'https://medhas-backend.onrender.com/api';
 };
 
 const API_BASE_URL = getApiBaseUrl();

@@ -70,7 +70,8 @@ const VideoConsultationScreen = ({ navigation }) => {
     useEffect(() => {
         // 1. Initialize Socket
         // Use localhost for local testing, or correct IP if running on device
-        const backendUrl = 'http://localhost:5000';
+        // Use the live Render backend URL for global access
+        const backendUrl = 'https://medhas-backend.onrender.com';
         const newSocket = io(backendUrl);
         socketRef.current = newSocket;
         setSocket(newSocket);
