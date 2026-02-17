@@ -185,45 +185,29 @@ app.use((err, req, res, next) => {
 });
 
 // Connect to MongoDB
-const connectDB = async () => {
-  try {
-    const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/medisafe';
+// Connect to MongoDB (Non-blocking)
+// In production (Render), process.env.MONGODB_URI should be set if DB is needed.
+// Locally, use localhost.
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/medhas_db';
 
-    await mongoose.connect(mongoUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('✅ MongoDB Connected'))
+  .catch(err => console.log('⚠️ MongoDB Connection Failed (App continues without DB):', err.message));
 
-    console.log('✅ MongoDB Connected Successfully');
-
-    // Start server (Using server.listen for Socket.io support)
-    server.listen(PORT, () => {
-      console.log(`\n🚀 Server running on port ${PORT}`);
-      console.log(`🌐 Web Interface: http://localhost:${PORT}`);
-      console.log(`📋 API Health: http://localhost:${PORT}/health`);
-      console.log(`🔧 API Test: http://localhost:${PORT}/test`);
-      console.log(`📚 API Docs: http://localhost:${PORT}/api-docs`);
-      console.log('\n📋 Available endpoints:');
-      console.log('   POST /api/auth/register - Register user');
-      console.log('   POST /api/auth/login - Login user');
-      console.log('   GET  /api/medications - Get medications (requires token)');
-    });
-  } catch (err) {
-    console.error('❌ MongoDB Connection Error:', err.message);
-    console.log('\n📌 To fix this:');
-    console.log('1. Make sure MongoDB is running');
-    console.log('2. Check your MONGODB_URI in .env file');
-    console.log('3. Or install MongoDB locally');
-    process.exit(1);
-  }
-};
-
-// Start the application
-connectDB();
+// Start Service
+server.listen(PORT, () => {
+  console.log(`\n🚀 Server running on port ${PORT}`);
+  console.log(`🌐 Web Interface: http://localhost:${PORT}`);
+  console.log(`📋 API Health: http://localhost:${PORT}/health`);
+});
 
 // Graceful shutdown
 process.on('SIGINT', () => {
-  mongoose.connection.close();
-  console.log('\n🛑 Server shutting down gracefully...');
-  process.exit(0);
+  mongoose.connection.close(false, () => {
+    console.log('\n🛑 Server shutting down gracefully...');
+    process.exit(0);
+  });
 });
